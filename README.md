@@ -7,6 +7,10 @@ number of useful facilities for manipulating Büchi automata via OCaml
 (this API is module based and includes facilities for chaining
 together various automata constructions).
 
+HyperLTL_2 is a syntactic restriction of HyperLTL, which is a logic 
+for stating and verifying security hyperproperties of systems.  The 
+logic is described in the paper [Temporal Logics for Hyperproperties](http://faculty.cs.gwu.edu/~clarkson/papers/clarkson_hyper_tl.pdf)
+
 ## Dependencies
 
 You need an OCaml compiler.  An easy way to get one is to
