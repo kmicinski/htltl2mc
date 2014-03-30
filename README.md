@@ -1,11 +1,23 @@
 # Model checker for HyperLTL_2 
 
-This is an implmentation of a model checker for the fragment of
-HyperLTL that allows one quantifier alternation between forall (A) and
-exists (E).  The implementation is automata based, and includes a
-number of useful facilities for manipulating Büchi automata via OCaml
-(this API is module based and includes facilities for chaining
-together various automata constructions).
+HyperLTL is an extension of linear-time temporal logic (LTL)
+with first-order quantification of traces.  It can be used
+for model-checking of security properties of programs.
+
+This software is a prototype model checker written to accompany 
+the Principles of Security and Trust (POST) 2014 paper titled 
+"Temporal Logics for Hyperproperties" by Clarkson, Finkbeiner, 
+Koleini, Micinski, Rabe, and Sanchez.  The full version of that
+paper can be found in an arXiv technical report at: 
+  
+  http://arxiv.org/abs/1401.4492.
+
+The model checker is for a fragment of HyperLTL
+that allows one quantifier alternation between forall (A) and
+exists (E).  This fragment is called HyperLTL_2.  It was
+originally described in another arXiv technical report:
+
+  http://arxiv.org/abs/1306.5678
 
 ## Dependencies
 
@@ -45,6 +57,9 @@ directory:
   Some examples are provided in the test_models/ directory.
 - formula_file is a string containing a HyperLTL formula.
   Some examples are provided in the test_formulas/ directory.
+  The formula syntax uses a nameless representation of traces,
+  as described in the original HyperLTL_2 technical report
+  [http://arxiv.org/abs/1306.5678].
 - path_to_goal is the path to the GOAL runtime as installed 
   on your system.
   
