@@ -19,6 +19,10 @@ originally described in another arXiv technical report:
 
   http://arxiv.org/abs/1306.5678
 
+HyperLTL_2 is a syntactic restriction of HyperLTL, which is a logic 
+for stating and verifying security hyperproperties of systems.  The 
+logic is described in the paper [Temporal Logics for Hyperproperties](http://faculty.cs.gwu.edu/~clarkson/papers/clarkson_hyper_tl.pdf)
+
 ## Dependencies
 
 You need an OCaml compiler.  An easy way to get one is to
