@@ -38,4 +38,5 @@ doc:
 	ocamlbuild model-checker.docdir/index.html -pkgs $(PKGS)
 
 clean:
-	rm -rf doc/ _build/ *.gff
+	rm *.cmi *.cmo
+	rm -rf doc/

@@ -1,27 +1,26 @@
 (*
-  The main driver for the model checker.
+  Driver for program generator
 *)
 
 let pp = Printf.printf
-module C = Checker
-module P = Program
+module I = Imp_to_lts
 module U = Utils
 
-open Formulas
-
-let main _ = match (Array.length Sys.argv) with
-  | 4 ->
-    let _ = pp "Running the model checker with %s as the input file..\n" (Sys.argv.(1))
+let main _ : unit = match (Array.length Sys.argv) with
+  | 3 -> 
+    let parse_program fname = 
+      let str = U.read_file fname in
+      let lexbuf = Lexing.from_string str in
+      Program_parser.program (Program_lexer.token) lexbuf
     in
-    let _ = pp "Verifying property:\n%s\n" Sys.argv.(2) in
+    (* pp "Generating model from input program.\n";*)
     let input_file = Sys.argv.(1) in
-    let regex      = Str.regexp ".*/?\(.*\).mod$" in
-    let model_name = Str.search_forward regex input_file 0; 
-      Str.matched_group 0 input_file in
-    pp "Model name: %s\n" model_name;
-    C.check_formula_and_model input_file Sys.argv.(2) model_name Sys.argv.(3);
-    pp "Finished checking all properties.\n"
-  | _ ->
-    pp "./model_checker input.model formula path-to-goal\n";;
+    let output_file = Sys.argv.(2) in
+    let output_mod =
+      I.build_model_from_program (parse_program input_file) output_file in
+    ()
+    (* pp "done...\n"; *)
+  | _ -> 
+    pp "./model_checker input.program output.lts\n";;
 
 main ()
